@@ -1,0 +1,8 @@
+node_modules
+not_versioned
+Thumbs.db
+*~
+.htaccess
+favicon.ico
+robots.txt
+sitemap.xml
