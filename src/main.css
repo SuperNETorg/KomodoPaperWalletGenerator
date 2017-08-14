@@ -14,7 +14,7 @@ hr { margin: 20px 0; border-top: 1px dashed #008000; }
 .keyarea .qrcode_private { display: inline-block; position: relative; top: 28px; float: right; }
 .pubkeyhex { word-wrap: break-word; }
 html { height: 100%; }
-body { font-family: Arial; background-image: url('images/diamonds.png'); height: 100%; }
+body { font-family: Arial; background-image: url('../images/diamonds.png'); height: 100%; }
 .faqs ol { padding: 0 0 0 25px; }
 .faqs li { padding: 3px 0; }
 .question { padding: 10px 15px; text-align: left; cursor: pointer; }
@@ -146,7 +146,7 @@ h1 { margin: 0px; height: 91px; }
 .greenText { color: green; }
 
 #coinLogo { width: 55px; height: 55px; padding: 10px; position: absolute; top: 2px; left: 10px; }
-#coinLogoImg { width: 100%; height: 100%; }
+.coinLogoImg { width: 100%; height: 100%; }
 
 .coinIcoin { width: 64px; height: 64px; padding: 10px; position: absolute; top: 272px; left: 48px; }
 #coinImg { width: 100%; height: 100%; }
@@ -249,7 +249,7 @@ h1 { margin: 0px; height: 91px; }
 .unittests { text-align: center; }
 .unittests div { width: 894px; font-family: monospace; text-align: left; margin: auto; padding: 5px; border: 1px solid black; }
 #testnet { display: none; background-color: Orange; color: #000000; border-radius: 5px; font-weight: bold; padding: 10px 0; margin: 0 auto 20px auto; }
-#busyblock { position: fixed; display: none; background: url("./images/busy.gif") #ccc no-repeat center; opacity: 0.4; width: 100%; height: 100%; top: 0; left: 0; z-index: 5000; }
+#busyblock { position: fixed; display: none; background: url("../images/busy.gif") #ccc no-repeat center; opacity: 0.4; width: 100%; height: 100%; top: 0; left: 0; z-index: 5000; }
 #busyblock.busy { display: block; }
 .hide { display: none; }
 .show { display: block; }

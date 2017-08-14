@@ -9,7 +9,7 @@ ninja.wallets.brainwallet = {
 		document.getElementById("brainarea").style.display = "none";
 	},
 
-	minPassphraseLength: 15,
+	minPassphraseLength: 3,
 
 	view: function () {
         document.getElementById("brainerror").innerHTML = "";
