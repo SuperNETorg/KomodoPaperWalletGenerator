@@ -9885,13 +9885,14 @@ Walletgenerator.net use the same security measures as the original project. All-
             <span id="brainlabelenterpassphrase" class="label"><label id="brainlabelenterpassphraselbl" class="i18n" for="brainpassphrase">Enter Passphrase: </label></span>
             <input tabindex="1" type="password" id="brainpassphrase" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" />
             <span><label id="brainlabelshow" for="brainpassphraseshow">Show?</label> <input type="checkbox" id="brainpassphraseshow" onchange="ninja.wallets.brainwallet.showToggle(this);" /></span>
+            <span><label id="brainlabeliguana" for="brainpassphraseiguana">Iguana compatible?</label> <input type="checkbox" id="brainpassphraseiguana" /></span>
             <span class="print"><input type="button" name="print" id="brainprint" value="Print" onclick="window.print();" /></span>
           </div>
           <div class="row extra">
             <span class="label" id="brainlabelconfirm"><label id="brainlabelconfirmlbl" class="i18n" for="brainpassphraseconfirm">Confirm Passphrase: </label></span>
             <input tabindex="2" type="password" id="brainpassphraseconfirm" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" />
             <span><input tabindex="3" type="button" id="brainview" value="View" onclick="ninja.wallets.brainwallet.view();" /></span>
-            <span id="brainalgorithm" class="notes right i18n">Algorithm: SHA256(passphrase)</span>
+            <span id="brainalgorithm" class="notes right i18n">Algorithm: SHA256 (passphrase)</span>
           </div>
           <div class="row extra"><span id="brainwarning"></span></div>
           <div class="row extra errorMsg"><span id="brainerror"></span></div>
@@ -11479,7 +11480,15 @@ ninja.wallets.brainwallet = {
 			// enforce a minimum passphrase length
 			if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
 				var bytes = Crypto.SHA256(key, { asBytes: true });
-				var btcKey = new Bitcoin.ECKey(bytes);
+				var btcKey;
+				if (document.getElementById("brainpassphraseiguana").checked) {
+		      bytes[0] &= 248;
+		      bytes[31] &= 127;
+		      bytes[31] |= 64;
+		      btcKey = new Bitcoin.ECKey(bytes).setCompressed(true);
+				} else {
+					btcKey = new Bitcoin.ECKey(bytes);
+				}
 				var bitcoinAddress = btcKey.getBitcoinAddress();
 				var privWif = btcKey.getBitcoinWalletImportFormat();
 				document.getElementById("brainbtcaddress").innerHTML = bitcoinAddress;
